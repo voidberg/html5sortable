@@ -460,7 +460,7 @@ export default function sortable (sortableElements, options: configuration|objec
      * Fires when valid drop target area is hit
      */
     on(sortableElement, 'drop', function (e) {
-      if (!listsConnected(sortableElement, dragging.parentElement)) {
+      if (!listsConnected(sortableElement, dragging)) {
         return
       }
       e.preventDefault()
@@ -632,7 +632,7 @@ export default function sortable (sortableElements, options: configuration|objec
       let element = e.target
       const sortableElement = element.isSortable === true ? element : findSortable(element, e)
       element = findDragElement(sortableElement, element)
-      if (!dragging || !listsConnected(sortableElement, dragging.parentElement) || data(sortableElement, '_disabled') === 'true') {
+      if (!dragging || !listsConnected(sortableElement, dragging) || data(sortableElement, '_disabled') === 'true') {
         return
       }
       const options = data(sortableElement, 'opts')

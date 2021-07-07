@@ -244,6 +244,19 @@ In the example the current list `.sortable` allows items within it to be sorted 
 
 If you want to be able to move items between to sortables, the `acceptFrom` option must be present on both of them.
 
+Can also accept a callback function with `destinationSortable` and `draggedElement` as paramaters, This function should return `true` or `false`:
+
+``` javascript
+sortable('.sortable', {
+  acceptFrom: function(destinationSortable, draggedElement){
+    if(draggedElement.classList.contains('canDrop')){
+      return true;
+    } else {
+      return false; 
+    }
+  }
+});
+
 ### placeholder
 Use the `placeholder` option to specify the markup of the placeholder:
 
